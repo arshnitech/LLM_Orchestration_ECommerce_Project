@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-Powered E-Commerce Search</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <h1>🔍 AI-Powered Semantic Search</h1>
+            <p>RAG-based Product Discovery with LLM-as-Judge Evaluation</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Search Section -->
+        <section class="search-section">
+            <div class="search-box">
+                <input 
+                    type="text" 
+                    id="searchInput" 
+                    placeholder="E.g., comfortable running shoes under 5000"
+                    class="search-input"
+                >
+                <button id="searchBtn" class="search-btn">Search</button>
+            </div>
+
+            <!-- Filters -->
+            <div class="filters">
+                <div class="filter-group">
+                    <label>Price Range:</label>
+                    <input type="number" id="priceMin" placeholder="Min" class="filter-input">
+                    <span>to</span>
+                    <input type="number" id="priceMax" placeholder="Max" class="filter-input">
+                </div>
+                <div class="filter-group">
+                    <label>Category:</label>
+                    <input type="text" id="category" placeholder="e.g., Electronics" class="filter-input">
+                </div>
+            </div>
+        </section>
+
+        <!-- Loading Indicator -->
+        <div id="loading" class="loading hidden">
+            <div class="spinner"></div>
+            <p>Searching with AI...</p>
+        </div>
+
+        <!-- Results Section -->
+        <section id="results" class="results hidden">
+            <!-- Metadata -->
+            <div class="metadata-card">
+                <div class="stat">
+                    <span class="stat-label">Retrieved:</span>
+                    <span id="retrievalCount" class="stat-value">0</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">Re-ranked:</span>
+                    <span id="rerankedCount" class="stat-value">0</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">Response Time:</span>
+                    <span id="responseTime" class="stat-value">0ms</span>
+                </div>
+            </div>
+
+            <!-- AI Explanation -->
+            <div class="explanation-card">
+                <h3>💬 AI Recommendation</h3>
+                <div id="llmExplanation" class="explanation-text"></div>
+            </div>
+
+            <!-- Evaluation Scores -->
+            <div id="evaluationCard" class="evaluation-card hidden">
+                <h3>📊 LLM-as-Judge Evaluation</h3>
+                <div class="scores-grid">
+                    <div class="score-item">
+                        <span class="score-label">Relevance</span>
+                        <span id="relevanceScore" class="score-value">0/5</span>
+                    </div>
+                    <div class="score-item">
+                        <span class="score-label">Faithfulness</span>
+                        <span id="faithfulnessScore" class="score-value">0/5</span>
+                    </div>
+                    <div class="score-item">
+                        <span class="score-label">Completeness</span>
+                        <span id="completenessScore" class="score-value">0/5</span>
+                    </div>
+                    <div class="score-item">
+                        <span class="score-label">Helpfulness</span>
+                        <span id="helpfulnessScore" class="score-value">0/5</span>
+                    </div>
+                    <div class="score-item overall">
+                        <span class="score-label">Overall</span>
+                        <span id="overallScore" class="score-value">0.0/5</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Products Grid -->
+            <div class="products-section">
+                <h3>🛍️ Recommended Products</h3>
+                <div id="productsGrid" class="products-grid"></div>
+            </div>
+        </section>
+
+        <!-- Metrics Section -->
+        <section class="metrics-section">
+            <div class="metrics-header">
+                <h3>📈 System Metrics</h3>
+                <button id="refreshMetrics" class="btn-secondary">Refresh</button>
+            </div>
+            <div id="metricsDisplay" class="metrics-display"></div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>AI-Powered E-Commerce Semantic Search • RAG + Re-ranking + LLM-as-Judge</p>
+    </footer>
+
+    <script src="/static/js/app.js"></script>
+</body>
+</html>
