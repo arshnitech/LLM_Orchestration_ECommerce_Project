@@ -2,8 +2,8 @@ trigger:
 - main
 
 variables:
-  azureServiceConnectionId: 'a08b4ecc-aa03-4056-8d11-66deb4c26b54'
-  webAppName: 'E-commSemanticSearch'
+  azureServiceConnectionId: 'ad4d83bf-42be-434b-a5a4-c7270160677f'
+  webAppName: 'testappee'
   pythonVersion: '3.11'
 
 stages:
@@ -13,7 +13,7 @@ stages:
   jobs:
   - job: BuildJob
     pool:
-      name: selfhosted-pool   # ✅ Self-hosted pool
+      name: selfhosted-pool   #  Self-hosted pool
 
     steps:
     - script: |
@@ -46,9 +46,9 @@ stages:
   jobs:
   - deployment: DeploymentJob
     pool:
-      name: selfhosted-pool   # ✅ Self-hosted pool again
+      name: selfhosted-pool   #  Self-hosted pool again
 
-    environment: E-commSemanticSearch
+    environment: testappee
 
     strategy:
       runOnce:
